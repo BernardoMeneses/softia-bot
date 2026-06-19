@@ -1,0 +1,8 @@
+discord.py[voice]>=2.4,<3.0
+beautifulsoup4>=4.12,<5.0
+ddgs>=9.14,<10.0
+imageio-ffmpeg>=0.5,<1.0
+openai>=1.91
+python-dotenv>=1.0,<2.0
+requests>=2.32,<3.0
+yt-dlp>=2024.8.6

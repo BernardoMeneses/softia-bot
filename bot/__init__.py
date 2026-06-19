@@ -1,0 +1,2 @@
+"""Softia Discord bot package."""
+
