@@ -1,6 +1,6 @@
 # Softia Bot
 
-Softia e um bot de Discord para automacao de servidor, musica, matematica, pesquisa online e conversas com IA.
+Softia e uma assistente pessoal que para já apenas um bot de discord mas terá outras integrações em automação de tarefas futuramente.
 
 ## Comandos
 
