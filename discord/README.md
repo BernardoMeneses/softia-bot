@@ -47,7 +47,7 @@ Quando o HTML do motor de pesquisa bloqueia resultados diretos, o bot usa um fal
 - `-chat <prompt>` - inicia uma conversa com IA usando a API do OpenAI
 - `-abortchat` - termina o modo chat e envia um `.txt` com a conversa
 
-No modo chat, as mensagens seguintes do utilizador no mesmo canal passam a ser interpretadas como prompts ate ser usado `-abortchat`.
+No modo chat, as mensagens seguintes de qualquer utilizador no mesmo canal passam a ser interpretadas como prompts ate ser usado `-abortchat`. Antes de responder, o bot faz pesquisa web e entrega resultados relevantes como contexto ao modelo.
 
 ### Gestao de Servidor
 
@@ -66,7 +66,7 @@ Os comandos de moderacao exigem as permissoes equivalentes no Discord, tanto no 
 - `-eventsoff` - desativa eventos aleatorios automaticos
 - `-eventnow` - envia um evento aleatorio imediatamente
 
-Os eventos automaticos usam o canal definido por `-seteventchannel` ou por `EVENT_CHANNEL_ID`. Os eventos sao interativos, com botoes para votacoes, quizzes e escolhas rapidas. O bot roda a lista de eventos por servidor para evitar repetir o mesmo evento ate a lista ser usada.
+Os eventos automaticos usam o canal definido por `-seteventchannel` ou por `EVENT_CHANNEL_ID`. Os eventos sao interativos, com botoes para votacoes ao vivo, quizzes com respostas privadas quando falhas, corridas de clique, portas misteriosas, desafios por equipa e recompensas em moedas. O bot roda a lista de eventos por servidor para evitar repetir o mesmo evento ate a lista ser usada.
 
 ### Auditoria Anti-Spam
 
@@ -85,12 +85,12 @@ A auditoria observa mensagens continuamente, apaga bursts de spam ou repeticao d
 - `-buy <item_id> [quantidade]` - compra items com moedas
 - `-inventory [@membro]` - mostra items comprados
 - `-leaderboard` - mostra utilizadores com mais moedas
-- `-blackjack <aposta>` - blackjack com botoes Hit/Stand
+- `-blackjack <aposta>` - blackjack em card interativo com botoes Hit/Stand
 - `-coinflip <heads/tails> <aposta>` - moeda ao ar
-- `-slots <aposta>` - slot machine
-- `-dice <1-6> <aposta>` - aposta no resultado do dado
+- `-slots <aposta>` - slot machine com animacao de emojis
+- `-dice <1-6> <aposta>` - aposta no resultado do dado com animacao de emojis
 
-Cada utilizador comeca com uma wallet de moedas e o estado fica guardado em `data/game_state.json`.
+Cada utilizador comeca com uma wallet de moedas e o estado fica guardado em `data/game_state.json`. Os jogos e comandos de economia usam cards quando o bot tem permissao de `Embed Links`, com fallback em texto quando essa permissao nao existe.
 
 
 O `Message Content Intent` do Discord e obrigatorio, porque o bot usa comandos com prefixo e le mensagens no modo chat.

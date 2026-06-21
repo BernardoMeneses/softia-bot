@@ -92,19 +92,19 @@ def register_commands(bot: commands.Bot) -> None:
 
     @bot.command(name="devs")
     async def devs(ctx: commands.Context) -> None:
-        await ctx.send(DEVS_MESSAGE)
+        await _send_embed_or_text(ctx, build_devs_embed(), DEVS_MESSAGE)
 
     @bot.command(name="sum")
     async def summary_or_sum(ctx: commands.Context, *args: str) -> None:
         if not args:
-            await ctx.send(BOT_SUMMARY)
+            await _send_embed_or_text(ctx, build_summary_embed(), BOT_SUMMARY)
             return
 
         await _send_binary_operation(ctx, args, math_utils.add, "`-sum <num1> <num2>`")
 
     @bot.command(name="info")
     async def info(ctx: commands.Context) -> None:
-        await ctx.send(INFO_MESSAGE)
+        await _send_embed_or_text(ctx, build_info_embed(), INFO_MESSAGE)
 
     @bot.command(name="mathinfo")
     async def math_info(ctx: commands.Context) -> None:
@@ -211,6 +211,73 @@ def _normalize_root_arg(value: str) -> str:
     if lowered.startswith("raiz(") and normalized.endswith(")"):
         return normalized[5:-1]
     return normalized
+
+
+async def _send_embed_or_text(ctx: commands.Context, embed: discord.Embed, fallback: str) -> None:
+    if _channel_can_embed(ctx.channel):
+        await ctx.send(embed=embed)
+        return
+
+    await ctx.send(fallback)
+
+
+def build_devs_embed() -> discord.Embed:
+    embed = discord.Embed(
+        title="Softia Devs",
+        description="People behind this bot.",
+        color=discord.Color.blurple(),
+    )
+    embed.add_field(name="Creator", value="RaiNz", inline=False)
+    embed.set_footer(text="Use -info to see every command section.")
+    return embed
+
+
+def build_summary_embed() -> discord.Embed:
+    embed = discord.Embed(
+        title="Softia",
+        description=BOT_SUMMARY,
+        color=discord.Color.dark_teal(),
+    )
+    embed.add_field(name="Main Areas", value="Music, math, search, AI chat, moderation, events and games.", inline=False)
+    embed.add_field(name="Start", value="Use `-info` to open the command center.", inline=False)
+    return embed
+
+
+def build_info_embed() -> discord.Embed:
+    embed = discord.Embed(
+        title="Softia Command Center",
+        description="Main info commands and feature sections.",
+        color=discord.Color.gold(),
+    )
+    embed.add_field(
+        name="Core",
+        value="`-devs` creators\n`-sum` bot summary\n`-info` this command center",
+        inline=False,
+    )
+    embed.add_field(
+        name="Features",
+        value="`-musicinfo` music\n`-mathinfo` math\n`-searchinfo` web search\n`-chatinfo` AI chat",
+        inline=False,
+    )
+    embed.add_field(
+        name="Server Systems",
+        value="`-serverinfo` moderation\n`-eventsinfo` interactive events\n`-auditinfo` anti-spam\n`-gameinfo` economy and games",
+        inline=False,
+    )
+    embed.set_footer(text="Use each info command to see the full command list for that section.")
+    return embed
+
+
+def _channel_can_embed(channel: object) -> bool:
+    guild = getattr(channel, "guild", None)
+    if guild is None:
+        return True
+
+    bot_member = getattr(guild, "me", None)
+    if bot_member is None or not hasattr(channel, "permissions_for"):
+        return False
+
+    return bool(channel.permissions_for(bot_member).embed_links)
 
 
 async def start_bot() -> None:

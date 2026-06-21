@@ -1,7 +1,7 @@
 DEVS_MESSAGE = "Created by RaiNz"
 
 BOT_SUMMARY = (
-    "Im Softia, a IA bot to manage the AllSoft server and partners"
+    "I'm Softia, an AI bot to manage the AllSoft server and partners. "
     "I have a multifunctional system with various commands, type -info to see my capabilities"
 )
 
@@ -44,9 +44,10 @@ SEARCH_INFO_MESSAGE = """Search Commands:
 """
 
 CHAT_INFO_MESSAGE = """Chat Commands:
-`-chat <prompt>` - initiates chat mode with the OpenAI API
-After activation, messages from this user in this channel will be treated as prompts.
-`-abortchat` - terminates the chat mode and sends a .txt file with the conversation
+`-chat <prompt>` - starts channel chat mode with the OpenAI API
+After activation, messages from any user in this channel will be treated as prompts.
+Softia searches the web before answering and includes useful results as context.
+`-abortchat` - terminates chat mode and sends a .txt file with the conversation
 """
 
 SERVER_INFO_MESSAGE = """Server Management Commands:
@@ -63,6 +64,7 @@ EVENTS_INFO_MESSAGE = """Random Event Commands:
 `-eventson` - enables automatic random events
 `-eventsoff` - disables automatic random events
 `-eventnow` - posts a random event immediately
+Events include live polls, private-answer quizzes, click races, mystery doors, team challenges and coin rewards.
 """
 
 AUDIT_INFO_MESSAGE = """Anti-Spam Audit Commands:
@@ -84,6 +86,6 @@ GAME_INFO_MESSAGE = """Game Commands:
 Available Games:
 `-blackjack <bet>` - blackjack with Hit/Stand buttons
 `-coinflip <heads/tails> <bet>` - coin flip
-`-slots <bet>` - slot machine
-`-dice <1-6> <bet>` - dice guess
+`-slots <bet>` - animated slot machine
+`-dice <1-6> <bet>` - animated dice guess
 """

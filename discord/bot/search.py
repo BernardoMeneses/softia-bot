@@ -21,6 +21,7 @@ class SearchError(RuntimeError):
 class SearchResult:
     title: str
     url: str
+    snippet: str = ""
 
 
 HEADERS = {
@@ -160,11 +161,12 @@ def fallback_search(query: str, limit: int = 5) -> list[SearchResult]:
 def _result_from_ddgs_item(item: dict[str, Any]) -> SearchResult | None:
     title = str(item.get("title") or "").strip()
     url = str(item.get("href") or item.get("url") or "").strip()
+    snippet = str(item.get("body") or item.get("snippet") or "").strip()
 
     if not title or not _is_valid_result(url):
         return None
 
-    return SearchResult(_clean_title(title), url)
+    return SearchResult(_clean_title(title), url, _clean_title(snippet))
 
 
 def _fetch_html(url: str) -> str:
