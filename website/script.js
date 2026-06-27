@@ -1,5 +1,6 @@
 const INVITE_URL = "https://discord.com/oauth2/authorize?client_id=1517642102773780680";
 const CONTACT_EMAIL = "bernardojvmeneses@gmail.com";
+const CONTACT_SUBJECT = "Softia support";
 const DEFAULT_ROUTE = "#home";
 const DEFAULT_LANGUAGE = "pt";
 
@@ -158,7 +159,16 @@ inviteLinks.forEach((link) => {
 });
 
 contactEmailLinks.forEach((link) => {
-  link.href = `mailto:${CONTACT_EMAIL}?subject=Softia%20support`;
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: CONTACT_EMAIL,
+    su: CONTACT_SUBJECT,
+  });
+
+  link.href = `https://mail.google.com/mail/?${params.toString()}`;
+  link.target = "_blank";
+  link.rel = "noreferrer";
 });
 
 yearTargets.forEach((target) => {
