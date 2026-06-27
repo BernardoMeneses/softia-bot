@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -12,6 +13,7 @@ DEFAULT_BALANCE = 100
 DAILY_REWARD = 100
 DAILY_COOLDOWN = timedelta(hours=24)
 DEFAULT_GAME_STATE_PATH = Path("data/game_state.json")
+GAME_STATE_PATH_ENV = "GAME_STATE_PATH"
 
 
 class GameStoreError(ValueError):
@@ -36,8 +38,8 @@ SHOP_ITEMS = (
 
 
 class GameStore:
-    def __init__(self, path: Path = DEFAULT_GAME_STATE_PATH):
-        self.path = path
+    def __init__(self, path: Path | None = None):
+        self.path = path or default_game_state_path()
         self._state = self._load()
 
     def balance(self, guild_id: int, user_id: int) -> int:
@@ -152,6 +154,13 @@ def format_duration(delta: timedelta) -> str:
     if minutes:
         return f"{minutes}m {seconds}s"
     return f"{seconds}s"
+
+
+def default_game_state_path() -> Path:
+    configured = os.getenv(GAME_STATE_PATH_ENV, "").strip()
+    if configured:
+        return Path(configured)
+    return DEFAULT_GAME_STATE_PATH
 
 
 def _parse_datetime(raw: str) -> datetime | None:

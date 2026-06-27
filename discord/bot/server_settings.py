@@ -7,11 +7,12 @@ from typing import Any
 
 
 DEFAULT_SETTINGS_PATH = Path("data/server_settings.json")
+SERVER_SETTINGS_PATH_ENV = "SERVER_SETTINGS_PATH"
 
 
 class ServerSettings:
-    def __init__(self, path: Path = DEFAULT_SETTINGS_PATH):
-        self.path = path
+    def __init__(self, path: Path | None = None):
+        self.path = path or default_settings_path()
         self._settings = self._load()
 
     def get_event_channel_id(self, guild_id: int) -> int | None:
@@ -73,3 +74,10 @@ class ServerSettings:
     def _save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.path.write_text(json.dumps(self._settings, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def default_settings_path() -> Path:
+    configured = os.getenv(SERVER_SETTINGS_PATH_ENV, "").strip()
+    if configured:
+        return Path(configured)
+    return DEFAULT_SETTINGS_PATH

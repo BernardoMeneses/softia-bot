@@ -13,13 +13,16 @@ Softia e uma assistente pessoal que para já apenas um bot de discord mas terá 
 ### Musica
 
 - `-musicinfo` - mostra comandos de musica
-- `-play <link ou nome>` - toca YouTube, procura pelo nome ou resolve link Spotify por pesquisa
+- `-play <link ou nome>` - toca YouTube, procura pelo nome ou resolve links Spotify por pesquisa
 - `-loop` - liga/desliga loop da musica atual
 - `-next` - passa para a proxima musica da queue
 - `-back` - volta para a musica anterior
+- `-stop` - para a musica atual e limpa a queue
+- `-disconnect` / `-dc` - desliga o bot do canal de voz e limpa o estado de musica
 - `-queue` - mostra a queue atual
+- `-clearqueue` / `-resetqueue` - limpa as musicas em espera
 
-Links Spotify sao resolvidos por titulo e pesquisados no YouTube, porque o bot nao faz streaming direto do Spotify.
+Links Spotify sao resolvidos por titulo e pesquisados no YouTube, porque o bot nao faz streaming direto do Spotify. Playlists precisam de `SPOTIFY_REFRESH_TOKEN`, gerado com `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` e `SPOTIFY_REDIRECT_URI`; o bot analisa as faixas e adiciona ate `SPOTIFY_QUEUE_LIMIT` musicas a queue. A playlist tem de ser tua ou uma playlist onde es colaborador.
 
 ### Math
 
@@ -85,7 +88,7 @@ A auditoria observa mensagens continuamente, apaga bursts de spam ou repeticao d
 - `-buy <item_id> [quantidade]` - compra items com moedas
 - `-inventory [@membro]` - mostra items comprados
 - `-leaderboard` - mostra utilizadores com mais moedas
-- `-blackjack <aposta>` - blackjack em card interativo com botoes Hit/Stand
+- `-blackjack <aposta>` / `-bj <aposta>` - blackjack em card interativo com botoes Hit/Stand
 - `-coinflip <heads/tails> <aposta>` - moeda ao ar
 - `-slots <aposta>` - slot machine com animacao de emojis
 - `-dice <1-6> <aposta>` - aposta no resultado do dado com animacao de emojis
@@ -94,3 +97,9 @@ Cada utilizador comeca com uma wallet de moedas e o estado fica guardado em `dat
 
 
 O `Message Content Intent` do Discord e obrigatorio, porque o bot usa comandos com prefixo e le mensagens no modo chat.
+
+## Deploy
+
+Para manter a Softia online sempre, usa um host com processo persistente/worker. Vercel nao e adequado para este bot no formato atual, porque o bot precisa manter uma ligacao WebSocket ativa ao gateway do Discord.
+
+Guia de deploy: [`DEPLOY.md`](DEPLOY.md)

@@ -20,11 +20,14 @@ INFO_MESSAGE = """Hello! I'm Softia, here are my commands:
 """
 
 MUSIC_INFO_MESSAGE = """Music Commands:
-`-play <link or name>` - plays YouTube, searches by name or resolves Spotify link
+`-play <link or name>` - plays YouTube, searches by name or resolves Spotify tracks/playlists
 `-loop` - toggles loop for the current song
 `-next` - skips to the next song in the queue
 `-back` - goes back to the previous song
+`-stop` - stops playback and clears the queue
+`-disconnect` / `-dc` - disconnects from voice and clears music state
 `-queue` - displays the current queue
+`-clearqueue` / `-resetqueue` - clears the waiting queue
 """
 
 MATH_INFO_MESSAGE = """Math Commands:
@@ -84,7 +87,7 @@ GAME_INFO_MESSAGE = """Game Commands:
 `-leaderboard` - shows the richest users
 
 Available Games:
-`-blackjack <bet>` - blackjack with Hit/Stand buttons
+`-blackjack <bet>` / `-bj <bet>` - blackjack with Hit/Stand buttons
 `-coinflip <heads/tails> <bet>` - coin flip
 `-slots <bet>` - animated slot machine
 `-dice <1-6> <bet>` - animated dice guess

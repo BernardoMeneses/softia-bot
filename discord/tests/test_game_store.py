@@ -1,6 +1,7 @@
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from bot.game_store import DEFAULT_BALANCE, GameStore, GameStoreError, format_coins
 
@@ -38,6 +39,16 @@ class GameStoreTest(unittest.TestCase):
 
             self.assertEqual(item.item_id, "ticket")
             self.assertEqual(store.inventory(1, 2)["ticket"], 2)
+
+    def test_default_path_can_be_configured_with_env(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "state" / "game_state.json"
+
+            with patch.dict("os.environ", {"GAME_STATE_PATH": str(path)}):
+                store = GameStore()
+                store.add_coins(1, 2, 50)
+
+                self.assertTrue(path.exists())
 
     def test_format_coins(self):
         self.assertEqual(format_coins(10), "🪙 10")

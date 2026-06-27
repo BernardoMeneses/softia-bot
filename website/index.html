@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Softia | Discord Bot</title>
+    <meta
+      name="description"
+      content="Adiciona a Softia ao teu servidor Discord para musica, jogos, economia, eventos e moderacao."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" data-route>
+        <img class="brand-mark" src="assets/softia-2.0.png" width="922" height="620" alt="" />
+        <span>Softia</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegacao principal" data-i18n-aria-label="nav.label">
+        <a href="#features" data-route data-i18n="nav.features">Funcionalidades</a>
+        <a href="#commands" data-route data-i18n="nav.commands">Comandos</a>
+        <a href="#contact" data-route data-i18n="nav.contact">Contacto</a>
+        <a href="#invite" data-route data-i18n="nav.invite">Convidar</a>
+      </nav>
+
+      <div class="header-tools">
+        <div class="language-switch" aria-label="Idioma" data-i18n-aria-label="language.label">
+          <button type="button" data-language="pt" aria-pressed="true">PT</button>
+          <button type="button" data-language="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a
+          class="header-cta"
+          href="https://discord.com/oauth2/authorize?client_id=1517642102773780680"
+          target="_blank"
+          rel="noreferrer"
+          data-invite-link
+        >
+          <i data-lucide="bot"></i>
+          <span data-i18n="nav.add">Convidar</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero route-section" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Discord bot</p>
+          <h1 id="hero-title" data-i18n="hero.title">A Softia no teu servidor.</h1>
+          <p class="lead" data-i18n="hero.lead">
+            Um bot com musica, jogos, economia, eventos e moderacao, preparado para comunidades que querem
+            comandos rapidos e uma presenca visual propria.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="primary-action"
+              href="https://discord.com/oauth2/authorize?client_id=1517642102773780680"
+              target="_blank"
+              rel="noreferrer"
+              data-invite-link
+            >
+              <i data-lucide="sparkles"></i>
+              <span data-i18n="actions.addDiscord">Convidar para o Discord</span>
+            </a>
+            <button class="secondary-action" type="button" data-copy-invite>
+              <i data-lucide="copy"></i>
+              <span data-i18n="actions.copyLink">Copiar link</span>
+            </button>
+          </div>
+          
+
+          <div class="hero-stats" aria-label="Resumo" data-i18n-aria-label="hero.summaryLabel">
+            <span data-i18n="hero.statMusic">Spotify e YouTube</span>
+            <span data-i18n="hero.statGames">Blackjack e economia</span>
+            <span data-i18n="hero.statEvents">Eventos e moderacao</span>
+          </div>
+        </div>
+
+        <aside class="bot-card" aria-label="Perfil da Softia" data-i18n-aria-label="bot.cardLabel">
+          <img class="bot-banner" src="assets/banner10.png" width="787" height="522" alt="" />
+          <div class="bot-profile">
+            <img
+              class="bot-avatar"
+              src="assets/softia-2.0.png"
+              width="922"
+              height="620"
+              alt="Imagem de perfil da Softia"
+              data-i18n-alt="bot.avatarAlt"
+            />
+            <div>
+              <p class="bot-name">Softia</p>
+              <p class="bot-role" data-i18n="bot.role">Musica, jogos e comunidade</p>
+            </div>
+          </div>
+          <div class="now-playing">
+            <i data-lucide="music-2"></i>
+            <div>
+              <span data-i18n="bot.nowPlaying">A tocar agora</span>
+              <strong data-i18n="bot.favoriteSong">A tua musica favorita</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="content-section route-section" id="features" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="features.eyebrow">Funcionalidades</p>
+          <h2 id="features-title" data-i18n="features.title">O essencial para manter o servidor ativo.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <i data-lucide="headphones"></i>
+            <h3 data-i18n="features.musicTitle">Musica</h3>
+            <p data-i18n="features.musicText">YouTube, Spotify por pesquisa, queue, loop, skip, stop e disconnect.</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="dice-5"></i>
+            <h3 data-i18n="features.gamesTitle">Jogos</h3>
+            <p data-i18n="features.gamesText">Blackjack com alias -bj, apostas, carteira e estado persistente.</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="party-popper"></i>
+            <h3 data-i18n="features.eventsTitle">Eventos</h3>
+            <p data-i18n="features.eventsText">Eventos interativos para votacoes, quizzes, corridas e recompensas.</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="shield-check"></i>
+            <h3 data-i18n="features.moderationTitle">Moderacao</h3>
+            <p data-i18n="features.moderationText">Ferramentas para bans, kicks, limpeza de mensagens e protecao anti-spam.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section route-section" id="commands" aria-labelledby="commands-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="commands.eyebrow">Comandos</p>
+          <h2 id="commands-title" data-i18n="commands.title">Prefixo rapido, sem setup pesado.</h2>
+        </div>
+
+        <div class="command-board">
+          <article class="command-highlight">
+            <div class="command-highlight-icon">
+              <i data-lucide="info"></i>
+            </div>
+            <div>
+              <p class="command-label" data-i18n="commands.mainLabel">Comando principal</p>
+              <h3><code>-info</code></h3>
+              <p data-i18n="commands.infoText">
+                Abre o painel visual da Softia e da acesso rapido as categorias de comandos do bot.
+              </p>
+            </div>
+          </article>
+
+          <div class="command-group">
+            <h3 data-i18n="commands.music">Musica</h3>
+            <span>-play</span>
+            <span>-queue</span>
+            <span>-next</span>
+            <span>-loop</span>
+            <span>-stop</span>
+            <span>-disconnect</span>
+          </div>
+          <div class="command-group">
+            <h3 data-i18n="commands.games">Jogos</h3>
+            <span>-blackjack</span>
+            <span>-bj</span>
+            <span>-daily</span>
+            <span>-wallet</span>
+            <span>-leaderboard</span>
+          </div>
+          <div class="command-group">
+            <h3 data-i18n="commands.server">Servidor</h3>
+            <span>-sum</span>
+            <span>-devs</span>
+            <span>-auditon</span>
+            <span>-seteventchannel</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section route-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+          <h2 id="contact-title" data-i18n="contact.title">Problemas com a Softia?</h2>
+          <p data-i18n="contact.text">
+            Se o bot nao responder, falhar musica ou faltar alguma permissao, envia os detalhes para o suporte.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <i data-lucide="mail"></i>
+            <h3 data-i18n="contact.supportTitle">Suporte AllSoftSystems</h3>
+            <p data-i18n="contact.supportText">
+              Inclui o nome do servidor, o comando usado e a mensagem de erro que apareceu no Discord.
+            </p>
+            <a class="secondary-action" href="mailto:bernardojvmeneses@gmail.com" data-contact-email>
+              <i data-lucide="send"></i>
+              <span data-i18n="contact.emailAction">Enviar email</span>
+            </a>
+          </article>
+
+          <article class="contact-card">
+            <i data-lucide="list-checks"></i>
+            <h3 data-i18n="contact.beforeTitle">Antes de contactar</h3>
+            <ul class="contact-list">
+              <li data-i18n="contact.checkInfo">Usa -info para confirmar os comandos disponiveis.</li>
+              <li data-i18n="contact.checkVoice">Confirma que a Softia tem acesso ao canal de voz/texto.</li>
+              <li data-i18n="contact.checkError">Guarda o erro exato mostrado pelo bot.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="invite-section route-section" id="invite" aria-labelledby="invite-title">
+        <div>
+          <p class="eyebrow" data-i18n="invite.eyebrow">Convidar</p>
+          <h2 id="invite-title" data-i18n="invite.title">Leva a Softia para o teu servidor.</h2>
+          <p data-i18n="invite.text">
+            O convite abre diretamente no Discord. Escolhe o servidor, confirma as permissoes e a Softia fica
+            pronta para receber comandos.
+          </p>
+        </div>
+        <div class="invite-box">
+          <a
+            class="primary-action"
+            href="https://discord.com/oauth2/authorize?client_id=1517642102773780680"
+            target="_blank"
+            rel="noreferrer"
+            data-invite-link
+          >
+            <i data-lucide="bot"></i>
+            <span data-i18n="actions.addDiscord">Convidar para o Discord</span>
+          </a>
+          <button class="secondary-action" type="button" data-copy-invite>
+            <i data-lucide="copy"></i>
+            <span data-i18n="actions.copyLink">Copiar link</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Copyright &copy; <span data-year></span> AllSoftSystems. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+      <a href="#home" data-route data-i18n="footer.top">Voltar ao topo</a>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

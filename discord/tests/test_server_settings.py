@@ -45,6 +45,16 @@ class ServerSettingsTest(unittest.TestCase):
             reloaded = ServerSettings(path)
             self.assertFalse(reloaded.spam_guard_enabled(123))
 
+    def test_default_path_can_be_configured_with_env(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "state" / "server_settings.json"
+
+            with patch.dict("os.environ", {"SERVER_SETTINGS_PATH": str(path)}):
+                settings = ServerSettings()
+                settings.set_event_channel_id(123, 456)
+
+                self.assertTrue(path.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,7 @@
 {
   "431119340188729345": {
     "event_channel_id": 1517644188680978558,
-    "events_enabled": true
+    "events_enabled": true,
+    "spam_guard_enabled": true
   }
 }
